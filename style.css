@@ -70,7 +70,7 @@ body {
 .tree-view {
     position: fixed;
     top: 5%;
-    right: 3%;
+    right: 10%;
     bottom: 5%;
     left: 32%;
 }
@@ -90,6 +90,7 @@ body {
 .node.level-2 { background: #c0392b; }
 
 .label {
+    font-size: small;
     position: absolute;
     transform: translateY(-50%);
     color: #222;
@@ -107,6 +108,7 @@ body {
                 box-shadow 220ms ease,
                 backdrop-filter 220ms ease,
                 -webkit-backdrop-filter 220ms ease;
+    white-space: nowrap;
 }
 
 /* 玻璃“上升”动效：悬浮在文字或相邻节点上时触发 */
