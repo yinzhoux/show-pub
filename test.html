@@ -14,12 +14,32 @@
     <div class="liquid-glass"></div>
 
     <div class="text-description">
+        <text>
+            Title
+        </text>
+        <text>
+            description...
+        </text>
     </div>
 
     <div class="image-container">
     </div>
 
-    <div class="tree-view">
+    <div class="tree-view" id="tree-view">
+        <svg class="tree-links" id="tree-links" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="tree-nodes" id="tree-nodes"></div>
     </div>
+
+    <div class="tooltip" id="tooltip" role="tooltip" hidden>
+        <div class="tooltip-content">
+            <h3 id="tooltip-title"></h3>
+            <p id="tooltip-desc"></p>
+        </div>
+        <div class="tooltip-arrow"></div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() { if (window.initTreeView) window.initTreeView(); });
+    </script>
 </body>
 </html>

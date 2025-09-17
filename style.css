@@ -65,3 +65,44 @@ body {
 
     background-color: yellow;
 }
+
+/* tree-view 基础布局与样式 */
+.tree-view {
+    position: fixed;
+    top: 5%;
+    right: 3%;
+    bottom: 5%;
+    left: 52%;
+}
+.tree-links { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tree-nodes { position: absolute; inset: 0; }
+
+.node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #e74c3c;
+    box-shadow: 0 0 0 3px #fff, 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.node.root { background: #222; cursor: default; }
+.node.level-1 { background: #e74c3c; }
+.node.level-2 { background: #c0392b; }
+
+.label { position: absolute; transform: translateY(-50%); color: #222; font-weight: 600; }
+.link { stroke: #333; stroke-width: 1.5; vector-effect: non-scaling-stroke; fill: none; }
+
+.tooltip {
+    position: fixed;
+    min-width: 220px;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 12px 14px;
+    z-index: 10;
+}
+.tooltip .tooltip-content { pointer-events: none; }
+.tooltip h3 { margin: 0 0 6px 0; font-size: 16px; }
+.tooltip p { margin: 0; color: #555; }
+.tooltip .tooltip-arrow { position: absolute; width: 12px; height: 12px; background: #fff; transform: rotate(45deg); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
