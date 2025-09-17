@@ -92,7 +92,31 @@
     function ensureTip(){ if(tip.el) return; tip.el = document.getElementById('tooltip'); tip.title = document.getElementById('tooltip-title'); tip.desc = document.getElementById('tooltip-desc'); tip.arrow = tip.el.querySelector('.tooltip-arrow'); }
     function showTip(e,node){ ensureTip(); tip.title.textContent = node.title; tip.desc.textContent = node.desc||''; tip.el.hidden=false; positionTip(e); }
     function hideTip(){ ensureTip(); tip.el.hidden = true; }
-    function positionTip(e){ ensureTip(); const dx=14, dy=14; tip.el.style.left=(e.clientX+dx)+'px'; tip.el.style.top=(e.clientY+dy)+'px'; tip.arrow.style.left='-6px'; tip.arrow.style.top='8px'; }
+    function positionTip(e){
+        ensureTip();
+        const dx = 14, dy = 14;
+        const vw = document.documentElement.clientWidth;
+        const vh = document.documentElement.clientHeight;
+
+        // 预估尺寸（先显示后测量）
+        tip.el.style.left = '-9999px';
+        tip.el.style.top = '-9999px';
+        tip.el.hidden = false;
+        const rect = tip.el.getBoundingClientRect();
+        const tw = rect.width; const th = rect.height;
+
+        let x = e.clientX + dx;
+        let y = e.clientY + dy;
+        if (x + tw > vw) x = vw - tw - 8; // 贴右侧边缘
+        if (y + th > vh) y = vh - th - 8; // 贴底部边缘
+        if (x < 8) x = 8;                 // 贴左侧边缘
+        if (y < 8) y = 8;                 // 贴顶部边缘
+
+        tip.el.style.left = x + 'px';
+        tip.el.style.top = y + 'px';
+        tip.arrow.style.left = '-6px';
+        tip.arrow.style.top = '8px';
+    }
 
     function onResize(){ render(); }
 
