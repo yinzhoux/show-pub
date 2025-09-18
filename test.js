@@ -3,23 +3,85 @@
      * demo tree 数据。约定：只到第二层（level-2）。
      */
     const data = {
-        id: 'root', title: 'Category', desc: '根节点（不交互）', children: [
-            { id: 'g1', title: 'Government', desc: '一级分组 1', url: '#', children: [
-                { id: 'g1a', title: 'Policy 1', desc: '示例说明 1', url: './pages/a1.html' },
-                { id: 'g1b', title: 'Policy 2', desc: '示例说明 2', url: './pages/a2.html' },
-                { id: 'g1c', title: 'Policy 3', desc: '示例说明 3', url: './pages/a3.html' },
-            ]},
-            { id: 'g2', title: 'Economy & Trade', desc: '一级分组 2', url: '#', children: [
-                { id: 'g2a', title: 'Tariff', desc: '示例说明 A', url: './pages/b1.html' },
-                { id: 'g2b', title: 'Export', desc: '示例说明 B', url: './pages/b2.html' }
-            ]},
-            { id: 'g3', title: 'Technology', desc: '一级分组 3', url: '#', children: [
-                { id: 'g3a', title: 'AI', desc: '示例说明 X', url: './pages/c1.html' },
-                { id: 'g3b', title: 'Cyber', desc: '示例说明 Y', url: './pages/c2.html' },
-                { id: 'g3c', title: 'Chips', desc: '示例说明 Z', url: './pages/c3.html' }
-            ]}
+        id: 'root',
+        title: 'Continent',
+        desc: '根节点（不交互）',
+        children: [
+          {
+            id: 'c1',
+            title: 'Asia',
+            desc: '亚洲的出版社',
+            url: '#',
+            children: [
+              { id: 'c1a', title: 'China Publishing Group', desc: '中国出版集团', url: './pages/asia1.html' },
+              { id: 'c1b', title: 'Kodansha', desc: '日本讲谈社', url: './pages/asia2.html' },
+              { id: 'c1c', title: 'Penguin Random House India', desc: '企鹅印度', url: './pages/asia3.html' }
+            ]
+          },
+          {
+            id: 'c2',
+            title: 'Europe',
+            desc: '欧洲的出版社',
+            url: '#',
+            children: [
+              { id: 'c2a', title: 'Hachette Livre', desc: '法国阿歇特出版社', url: './pages/europe1.html' },
+              { id: 'c2b', title: 'Springer Nature', desc: '德国施普林格·自然', url: './pages/europe2.html' },
+              { id: 'c2c', title: 'Bloomsbury', desc: '英国布卢姆斯伯里', url: './pages/europe3.html' }
+            ]
+          },
+          {
+            id: 'c3',
+            title: 'North America',
+            desc: '北美的出版社',
+            url: '#',
+            children: [
+              { id: 'c3a', title: 'HarperCollins', desc: '美国哈珀柯林斯', url: './pages/na1.html' },
+              { id: 'c3b', title: 'Simon & Schuster', desc: '美国西蒙与舒斯特', url: './pages/na2.html' },
+              { id: 'c3c', title: 'Scholastic', desc: '美国学乐出版社', url: './pages/na3.html' }
+            ]
+          },
+          {
+            id: 'c4',
+            title: 'South America',
+            desc: '南美的出版社',
+            url: '#',
+            children: [
+              { id: 'c4a', title: 'Editora Abril', desc: '巴西阿布里尔出版社', url: './pages/sa1.html' },
+              { id: 'c4b', title: 'Planeta do Brasil', desc: '巴西行星出版社', url: './pages/sa2.html' }
+            ]
+          },
+          {
+            id: 'c5',
+            title: 'Africa',
+            desc: '非洲的出版社',
+            url: '#',
+            children: [
+              { id: 'c5a', title: 'Heinemann Kenya', desc: '海尼曼肯尼亚', url: './pages/af1.html' },
+              { id: 'c5b', title: 'NB Publishers', desc: '南非NB出版商', url: './pages/af2.html' }
+            ]
+          },
+          {
+            id: 'c6',
+            title: 'Australia/Oceania',
+            desc: '澳洲/大洋洲的出版社',
+            url: '#',
+            children: [
+              { id: 'c6a', title: 'Allen & Unwin', desc: '澳大利亚艾伦与昂温', url: './pages/oc1.html' },
+              { id: 'c6b', title: 'University of Queensland Press', desc: '昆士兰大学出版社', url: './pages/oc2.html' }
+            ]
+          },
+          {
+            id: 'c7',
+            title: 'Antarctica',
+            desc: '南极洲（科研/资料出版）',
+            url: '#',
+            children: [
+              { id: 'c7a', title: 'Polar Research Institute Press', desc: '极地研究院出版', url: './pages/an1.html' }
+            ]
+          }
         ]
-    };
+      };
+      
 
     // 计算每个节点的显示坐标（三列布局）
     /**
