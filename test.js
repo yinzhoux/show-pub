@@ -10,77 +10,78 @@
           {
             id: 'c1',
             title: 'Asia',
-            desc: '亚洲的出版社',
+            desc: '亚洲的媒体',
             url: '#',
             children: [
-              { id: 'c1a', title: 'China Publishing Group', desc: '中国出版集团', url: './pages/asia1.html' },
-              { id: 'c1b', title: 'Kodansha', desc: '日本讲谈社', url: './pages/asia2.html' },
-              { id: 'c1c', title: 'Penguin Random House India', desc: '企鹅印度', url: './pages/asia3.html' }
+              { id: 'c1a', title: 'CCTV',                 needShow: false, desc: '中国中央电视台', url: './pages/asia1.html' },
+              { id: 'c1b', title: 'NHK',                  needShow: false, desc: '日本放送协会',     url: './pages/asia2.html' },
+              { id: 'c1c', title: 'The Times of India',   needShow: true,  desc: '印度时报',         url: './pages/asia3.html' }
             ]
           },
           {
             id: 'c2',
             title: 'Europe',
-            desc: '欧洲的出版社',
+            desc: '欧洲的媒体',
             url: '#',
             children: [
-              { id: 'c2a', title: 'Hachette Livre', desc: '法国阿歇特出版社', url: './pages/europe1.html' },
-              { id: 'c2b', title: 'Springer Nature', desc: '德国施普林格·自然', url: './pages/europe2.html' },
-              { id: 'c2c', title: 'Bloomsbury', desc: '英国布卢姆斯伯里', url: './pages/europe3.html' }
+              { id: 'c2a', title: 'BBC',             needShow: true,  desc: '英国广播公司',       url: './pages/europe1.html' },
+              { id: 'c2b', title: 'Le Monde',        needShow: false, desc: '法国《世界报》',     url: './pages/europe2.html' },
+              { id: 'c2c', title: 'Der Spiegel',     needShow: false, desc: '德国《明镜周刊》',   url: './pages/europe3.html' }
             ]
           },
           {
             id: 'c3',
             title: 'North America',
-            desc: '北美的出版社',
+            desc: '北美的媒体',
             url: '#',
             children: [
-              { id: 'c3a', title: 'HarperCollins', desc: '美国哈珀柯林斯', url: './pages/na1.html' },
-              { id: 'c3b', title: 'Simon & Schuster', desc: '美国西蒙与舒斯特', url: './pages/na2.html' },
-              { id: 'c3c', title: 'Scholastic', desc: '美国学乐出版社', url: './pages/na3.html' }
+              { id: 'c3a', title: 'The New York Times', needShow: false, desc: '美国《纽约时报》', url: './pages/na1.html' },
+              { id: 'c3b', title: 'CNN',               needShow: true,  desc: '美国有线电视新闻网', url: './pages/na2.html' },
+              { id: 'c3c', title: 'The Washington Post',needShow: false, desc: '美国《华盛顿邮报》', url: './pages/na3.html' }
             ]
           },
           {
             id: 'c4',
             title: 'South America',
-            desc: '南美的出版社',
+            desc: '南美的媒体',
             url: '#',
             children: [
-              { id: 'c4a', title: 'Editora Abril', desc: '巴西阿布里尔出版社', url: './pages/sa1.html' },
-              { id: 'c4b', title: 'Planeta do Brasil', desc: '巴西行星出版社', url: './pages/sa2.html' }
+              { id: 'c4a', title: 'O Globo',       needShow: false, desc: '巴西《环球报》',     url: './pages/sa1.html' },
+              { id: 'c4b', title: 'Folha de S.Paulo', needShow: true,  desc: '巴西《圣保罗页报》', url: './pages/sa2.html' }
             ]
           },
           {
             id: 'c5',
             title: 'Africa',
-            desc: '非洲的出版社',
+            desc: '非洲的媒体',
             url: '#',
             children: [
-              { id: 'c5a', title: 'Heinemann Kenya', desc: '海尼曼肯尼亚', url: './pages/af1.html' },
-              { id: 'c5b', title: 'NB Publishers', desc: '南非NB出版商', url: './pages/af2.html' }
+              { id: 'c5a', title: 'Daily Nation',  needShow: false, desc: '肯尼亚《国家日报》', url: './pages/af1.html' },
+              { id: 'c5b', title: 'News24',        needShow: false, desc: '南非News24',        url: './pages/af2.html' }
             ]
           },
           {
             id: 'c6',
             title: 'Australia/Oceania',
-            desc: '澳洲/大洋洲的出版社',
+            desc: '澳洲/大洋洲的媒体',
             url: '#',
             children: [
-              { id: 'c6a', title: 'Allen & Unwin', desc: '澳大利亚艾伦与昂温', url: './pages/oc1.html' },
-              { id: 'c6b', title: 'University of Queensland Press', desc: '昆士兰大学出版社', url: './pages/oc2.html' }
+              { id: 'c6a', title: 'ABC (Australia)',           needShow: false, desc: '澳大利亚广播公司',   url: './pages/oc1.html' },
+              { id: 'c6b', title: 'The Sydney Morning Herald', needShow: false, desc: '悉尼先驱晨报',       url: './pages/oc2.html' }
             ]
           },
           {
             id: 'c7',
             title: 'Antarctica',
-            desc: '南极洲（科研/资料出版）',
+            desc: '南极洲（科研/资料媒体）',
             url: '#',
             children: [
-              { id: 'c7a', title: 'Polar Research Institute Press', desc: '极地研究院出版', url: './pages/an1.html' }
+              { id: 'c7a', title: 'Polar Research Bulletin', needShow: false, desc: '极地研究公告', url: './pages/an1.html' }
             ]
           }
         ]
       };
+      
       
 
     // 计算每个节点的显示坐标（三列布局）
@@ -232,20 +233,19 @@
             }
             nodesHost.appendChild(el);
 
-            if(level>0){
+            if(level === 1){
                 const label = document.createElement('div');
                 label.className = 'label';
                 label.textContent = node.title;
                 label.style.left = (x + 14) + 'px';
                 label.style.top = y + 'px';
                 nodesHost.appendChild(label);
+            }
 
-                // 针对二级节点：按 needShow 决定是否绘制描述，位置右侧偏移
-                if(level === 2 && node.needShow){
-                    const dx = 140; // 描述标签相对节点的横向距离
-                    const dy = -26; // 描述标签相对节点的纵向偏移
-                    renderDescFor(node.id, x + dx, y + dy, node.desc || '');
-                }
+            if (level === 2 && node.needShow) {
+                const dx = 100;
+                const dy = -26;
+                renderDescFor(node.id, x + dx, y + dy, node.desc || '');
             }
         });
     }
@@ -259,13 +259,13 @@
      */
     const tip = { el:null, title:null, desc:null, arrow:null };
     function ensureTip(){ if(tip.el) return; tip.el = document.getElementById('tooltip'); tip.title = document.getElementById('tooltip-title'); tip.desc = document.getElementById('tooltip-desc'); tip.arrow = tip.el.querySelector('.tooltip-arrow'); }
-    function showTip(e,node){ ensureTip(); tip.title.textContent = node.title; tip.desc.textContent = node.desc||''; tip.el.hidden=false; positionTip(e); }
+    function showTip(e,node){ ensureTip(); tip.title.textContent = node.title; tip.desc.textContent = node.desc||''; tip.el.hidden=false; positionTip(e, node); }
     function hideTip(){ ensureTip(); tip.el.hidden = true; }
     // 根据鼠标位置摆放 tooltip
     // 水平：左右贴边；垂直：优先下方，不够则上方
-    function positionTip(e){
+    function positionTip(e, node){
         ensureTip();
-        const dx = 14, dy = 14; // 相对于鼠标的偏移（避免遮住指针）
+        const dx = 16, dy = 16; // 相对于鼠标的偏移（避免遮住指针）
         const vw = document.documentElement.clientWidth;  // 视口宽度
         const vh = document.documentElement.clientHeight; // 视口高度
 
@@ -277,6 +277,7 @@
         const tw = rect.width;  // tooltip 实际宽度
         const th = rect.height; // tooltip 实际高度
 
+        // 固定放在鼠标右侧稍偏下方，不与鼠标左对齐
         let x = e.clientX + dx; // 初步的水平位置（鼠标右侧）
         // 优先在鼠标下方；若不够则放上方
         let placeAbove = false;

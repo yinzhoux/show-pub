@@ -172,15 +172,24 @@ body {
 
 .tooltip {
     position: fixed;
-    min-width: 220px;
-    max-width: 320px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    padding: 12px 14px;
+    min-width: 440px; /* 宽度为原来的两倍 */
+    max-width: 640px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.60), rgba(255,255,255,0.35));
+    border-radius: 14px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.55);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    box-shadow: 14px 18px 40px rgba(0,0,0,0.35); /* 右下方向的阴影 */
     z-index: 10;
 }
 .tooltip .tooltip-content { pointer-events: none; }
 .tooltip h3 { margin: 0 0 6px 0; font-size: 16px; }
-.tooltip p { margin: 0; color: #555; }
-.tooltip .tooltip-arrow { position: absolute; width: 12px; height: 12px; background: #fff; transform: rotate(45deg); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.tooltip p { margin: 0; color: #222; }
+.tooltip .tooltip-arrow {
+    position: absolute; width: 12px; height: 12px; background: linear-gradient(180deg, rgba(255,255,255,0.60), rgba(255,255,255,0.35));
+    border: 1px solid rgba(255,255,255,0.55);
+    transform: translateY(-50%) rotate(45deg);
+    left: -6px; top: 50%;
+    box-shadow: 8px 10px 20px rgba(0,0,0,0.25);
+}
