@@ -168,6 +168,7 @@ body {
     box-shadow: 0 10px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.5);
 }
 .link { stroke: #f5e6b3; stroke-width: 2; vector-effect: non-scaling-stroke; fill: none; }
+.desc-link { stroke: #111; stroke-width: 1.5; vector-effect: non-scaling-stroke; fill: none; }
 
 .tooltip {
     position: fixed;

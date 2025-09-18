@@ -114,13 +114,46 @@
         pos.set(data.id, { x: colX[0], y: rootY, level: 0, node: data });
 
         // 一级节点纵向间隔（根据可用高度平均分配）
-        const l1Gap = (height - 200) / (data.children.length - 1);
+        // 一级节点纵向间隔（最小间距限制，避免重叠）
+        const minGap = 72;
+        const l1Gap = Math.max(minGap, (height - 200) / Math.max(1, (data.children.length - 1)));
+        // 初步布局
+        const l1Ys = [];
         data.children.forEach((n,i)=>{
-            const y = padding + 90 + i*l1Gap;  // 当前一级的 y
+            const y = padding + 90 + i*l1Gap;  // 当前一级的 y（初步）
+            l1Ys.push(y);
             pos.set(n.id, { x: colX[1], y, level: 1, node: n });
-            const gap2 = 48; // 二级节点围绕一级节点的上下偏移间距
+            const gap2Base = 21; // 二级节点围绕一级节点的上下偏移间距（基础值）
+            const gap2 = Math.max(28, gap2Base - Math.max(0, (n.children.length-3))*4); // 子数越多，间距略缩小但保留下限
+            // 为二级节点引入最小间距并做简单的避让
+            const childYs = [];
             n.children.forEach((m,j)=>{
-                pos.set(m.id, { x: colX[2], y: y + (j - (n.children.length-1)/2)*gap2, level: 2, node: m });
+                const base = y + (j - (n.children.length-1)/2)*gap2;
+                let cy = base;
+                // 与前一个子节点保持至少 28px 的间距
+                if (childYs.length>0 && cy - childYs[childYs.length-1] < 28) {
+                    cy = childYs[childYs.length-1] + 28;
+                }
+                childYs.push(cy);
+                pos.set(m.id, { x: colX[2], y: cy, level: 2, node: m });
+            });
+        });
+        // 简单的全局避让：保证相邻一级 y 差值不小于 minGap
+        for (let i=1;i<l1Ys.length;i++){
+            if (l1Ys[i] - l1Ys[i-1] < minGap) {
+                const delta = minGap - (l1Ys[i] - l1Ys[i-1]);
+                // 向下推后续所有一级节点
+                for (let k=i;k<l1Ys.length;k++) l1Ys[k] += delta;
+            }
+        }
+        // 应用修正后的 y 回 pos（一级及其子）
+        data.children.forEach((n,i)=>{
+            const newY = l1Ys[i];
+            const prev = pos.get(n.id);
+            if (prev) pos.set(n.id, { ...prev, y: newY });
+            n.children.forEach((m)=>{
+                const c = pos.get(m.id);
+                if (c) pos.set(m.id, { ...c, y: c.y + (newY - prev.y) });
             });
         });
         return pos;
@@ -150,7 +183,36 @@
             svg.appendChild(line);
         }
 
-        data.children.forEach(l1=>{ link(data.id, l1.id); l1.children.forEach(l2=> link(l1.id, l2.id)); });
+        data.children.forEach(l1=>{
+            link(data.id, l1.id);
+            l1.children.forEach(l2=> link(l1.id, l2.id));
+        });
+
+        // 根据 needShow 在节点附近绘制 desc 连线与标签
+        function renderDescFor(nodeId, labelX, labelY, text){
+            const offsetX = 60; // 说明文字起点与节点的横向距离
+            const offsetY = -18; // 说明文字相对节点的纵向偏移
+            const start = pos.get(nodeId);
+            if(!start) return;
+            const x1 = start.x + 7; // 从节点右侧出发
+            const y1 = start.y;
+            const x2 = labelX + 4;  // 连接到文字左侧稍微内一点
+            const y2 = labelY - 2;
+            const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+            line.setAttribute('class','desc-link');
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2);
+            line.setAttribute('y2', y2);
+            svg.appendChild(line);
+
+            const tag = document.createElement('div');
+            tag.className = 'label';
+            tag.textContent = text;
+            tag.style.left = (labelX) + 'px';
+            tag.style.top = (labelY) + 'px';
+            nodesHost.appendChild(tag);
+        }
 
         // 节点与标签（标签位于节点右侧 14px）
         nodesHost.innerHTML='';
@@ -177,6 +239,13 @@
                 label.style.left = (x + 14) + 'px';
                 label.style.top = y + 'px';
                 nodesHost.appendChild(label);
+
+                // 针对二级节点：按 needShow 决定是否绘制描述，位置右侧偏移
+                if(level === 2 && node.needShow){
+                    const dx = 140; // 描述标签相对节点的横向距离
+                    const dy = -26; // 描述标签相对节点的纵向偏移
+                    renderDescFor(node.id, x + dx, y + dy, node.desc || '');
+                }
             }
         });
     }
