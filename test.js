@@ -111,7 +111,7 @@
          * - node: 原始数据对象
          */
         const pos = new Map();
-        const rootY = padding + 690; // 根节点纵坐标（固定在顶部附近）
+        const rootY = padding + 730; // 根节点纵坐标（固定在顶部附近）
         pos.set(data.id, { x: colX[0], y: rootY, level: 0, node: data });
 
         // 一级节点纵向间隔（根据可用高度平均分配）
