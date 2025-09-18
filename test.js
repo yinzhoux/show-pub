@@ -36,9 +36,9 @@
         const width = rect.width - padding*2;   // 可用宽度
         const height = rect.height - padding*2; // 可用高度
         const colX = [
-            padding-170,           // 根节点列 x
-            padding + width*0.32,   // 一级列 x（靠左侧 32%）
-            padding + width*0.95    // 二级列 x（靠右侧 95%）
+            padding+368,           // 根节点列 x
+            padding + width*0.48,   // 一级列 x（靠左侧 32%）
+            padding + width*0.85    // 二级列 x（靠右侧 95%）
         ];
 
         /**
@@ -48,13 +48,13 @@
          * - node: 原始数据对象
          */
         const pos = new Map();
-        const rootY = padding + 660; // 根节点纵坐标（固定在顶部附近）
+        const rootY = padding + 690; // 根节点纵坐标（固定在顶部附近）
         pos.set(data.id, { x: colX[0], y: rootY, level: 0, node: data });
 
         // 一级节点纵向间隔（根据可用高度平均分配）
-        const l1Gap = (height - 100) / (data.children.length - 1);
+        const l1Gap = (height - 200) / (data.children.length - 1);
         data.children.forEach((n,i)=>{
-            const y = padding + 80 + i*l1Gap;  // 当前一级的 y
+            const y = padding + 90 + i*l1Gap;  // 当前一级的 y
             pos.set(n.id, { x: colX[1], y, level: 1, node: n });
             const gap2 = 48; // 二级节点围绕一级节点的上下偏移间距
             n.children.forEach((m,j)=>{
