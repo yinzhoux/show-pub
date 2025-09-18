@@ -57,6 +57,26 @@ body {
   filter: blur(0.2px);
 }
 
+/* 动态水滴（轻微漂移） */
+.liquid-glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60px 45px at 18% 28%, rgba(255,255,255,0.55), rgba(255,255,255,0.18) 60%, rgba(255,255,255,0) 72%),
+      radial-gradient(44px 34px at 80% 32%, rgba(255,255,255,0.5), rgba(255,255,255,0.16) 58%, rgba(255,255,255,0) 70%),
+      radial-gradient(36px 28px at 68% 76%, rgba(255,255,255,0.5), rgba(255,255,255,0.16) 58%, rgba(255,255,255,0) 70%);
+    background-repeat: no-repeat;
+    animation: drops-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes drops-drift {
+    0% { background-position: 0px 0px, 0px 0px, 0px 0px; filter: blur(0.1px); }
+    50% { background-position: 8px -6px, -10px 6px, 6px 10px; filter: blur(0.2px); }
+    100% { background-position: 16px -12px, -18px 12px, 12px 18px; filter: blur(0.3px); }
+}
+
 .text-description {
     position: fixed;
     top: 10%;
