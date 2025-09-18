@@ -1,12 +1,3 @@
-/**
- * tree-view 的最小可交互框架
- * - 三层树：root → level-1 → level-2
- * - 交互：悬浮显示卡片、点击打开链接
- * - 关键点：
- *   1) 绝对定位节点 + SVG path 连线
- *   2) 简单三列布局算法
- *   3) Tooltip 定位：仅左右贴边；上下通过“在鼠标上/下方”避免溢出
- */
 (function(){
     /**
      * demo tree 数据。约定：只到第二层（level-2）。
@@ -14,18 +5,18 @@
     const data = {
         id: 'root', title: 'Category', desc: '根节点（不交互）', children: [
             { id: 'g1', title: 'Government', desc: '一级分组 1', url: '#', children: [
-                { id: 'g1a', title: 'Policy 1', desc: '示例说明 1', url: 'https://example.com/1' },
-                { id: 'g1b', title: 'Policy 2', desc: '示例说明 2', url: 'https://example.com/2' },
-                { id: 'g1c', title: 'Policy 3', desc: '示例说明 3', url: 'https://example.com/3' },
+                { id: 'g1a', title: 'Policy 1', desc: '示例说明 1', url: './pages/a1.html' },
+                { id: 'g1b', title: 'Policy 2', desc: '示例说明 2', url: './pages/a2.html' },
+                { id: 'g1c', title: 'Policy 3', desc: '示例说明 3', url: './pages/a3.html' },
             ]},
             { id: 'g2', title: 'Economy & Trade', desc: '一级分组 2', url: '#', children: [
-                { id: 'g2a', title: 'Tariff', desc: '示例说明 A', url: 'https://example.com/a' },
-                { id: 'g2b', title: 'Export', desc: '示例说明 B', url: 'https://example.com/b' }
+                { id: 'g2a', title: 'Tariff', desc: '示例说明 A', url: './pages/b1.html' },
+                { id: 'g2b', title: 'Export', desc: '示例说明 B', url: './pages/b2.html' }
             ]},
             { id: 'g3', title: 'Technology', desc: '一级分组 3', url: '#', children: [
-                { id: 'g3a', title: 'AI', desc: '示例说明 X', url: 'https://example.com/x' },
-                { id: 'g3b', title: 'Cyber', desc: '示例说明 Y', url: 'https://example.com/y' },
-                { id: 'g3c', title: 'Chips', desc: '示例说明 Z', url: 'https://example.com/z' }
+                { id: 'g3a', title: 'AI', desc: '示例说明 X', url: './pages/c1.html' },
+                { id: 'g3b', title: 'Cyber', desc: '示例说明 Y', url: './pages/c2.html' },
+                { id: 'g3c', title: 'Chips', desc: '示例说明 Z', url: './pages/c3.html' }
             ]}
         ]
     };
@@ -108,8 +99,10 @@
                 el.addEventListener('mouseenter', (e)=> showTip(e,node));
                 el.addEventListener('mousemove', positionTip);
                 el.addEventListener('mouseleave', hideTip);
-                // 点击：打开外部链接（新标签）
-                el.addEventListener('click', ()=> node.url && window.open(node.url,'_blank'));
+                // 点击：仅二级节点跳转（新标签）
+                if (level === 2) {
+                    el.addEventListener('click', ()=> node.url && window.open(node.url,'_blank'));
+                }
             }
             nodesHost.appendChild(el);
 
