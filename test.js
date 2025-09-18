@@ -36,7 +36,7 @@
         const width = rect.width - padding*2;   // 可用宽度
         const height = rect.height - padding*2; // 可用高度
         const colX = [
-            padding + 24,           // 根节点列 x
+            padding-170,           // 根节点列 x
             padding + width*0.32,   // 一级列 x（靠左侧 32%）
             padding + width*0.95    // 二级列 x（靠右侧 95%）
         ];
@@ -48,7 +48,7 @@
          * - node: 原始数据对象
          */
         const pos = new Map();
-        const rootY = padding + 32; // 根节点纵坐标（固定在顶部附近）
+        const rootY = padding + 660; // 根节点纵坐标（固定在顶部附近）
         pos.set(data.id, { x: colX[0], y: rootY, level: 0, node: data });
 
         // 一级节点纵向间隔（根据可用高度平均分配）
@@ -76,14 +76,16 @@
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
         svg.innerHTML = '';
 
-        // 画从 a → b 的三次贝塞尔曲线，使连线更柔和
+        // 画从 a → b 的直线
         function link(a,b){
             const p1 = pos.get(a); const p2 = pos.get(b);
-            const mx = (p1.x + p2.x)/2; // 曲线中点的 x，用来制造向右的弯曲
-            const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-            path.setAttribute('class','link');
-            path.setAttribute('d', `M ${p1.x} ${p1.y} C ${mx} ${p1.y}, ${mx} ${p2.y}, ${p2.x} ${p2.y}`);
-            svg.appendChild(path);
+            const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+            line.setAttribute('class','link');
+            line.setAttribute('x1', p1.x);
+            line.setAttribute('y1', p1.y);
+            line.setAttribute('x2', p2.x);
+            line.setAttribute('y2', p2.y);
+            svg.appendChild(line);
         }
 
         data.children.forEach(l1=>{ link(data.id, l1.id); l1.children.forEach(l2=> link(l1.id, l2.id)); });

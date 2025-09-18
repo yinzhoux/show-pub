@@ -32,6 +32,22 @@ body {
     bottom: 0;
 }
 
+.linear-image-right {
+    background: linear-gradient(90deg, rgb(102, 8, 116), white);
+    position: fixed;
+    width: 5%;
+    height: 100%;
+    right: 0;
+}
+
+.linear-image-up {
+    background: linear-gradient(0deg, rgb(102, 8, 116), white);
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    top: 0;
+}
+
 .liquid-glass {
     position: fixed;
     top: 2.5%;
@@ -44,6 +60,7 @@ body {
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
 .text-description {
@@ -56,6 +73,7 @@ body {
     flex-direction: column;
     gap: 12px;
     background: transparent;
+    z-index: 2;
 }
 
 /* 标题与描述的排版优化（沿用现有 <text> 标签） */
@@ -87,12 +105,17 @@ body {
 
 .image-container {
     position: fixed;
-    bottom: 10%;
-    left: 5%;
+    bottom: 3.5%;
+    left: 1.5%;
     width: 45%;
-    aspect-ratio: 1 / 0.5;
+    aspect-ratio: 1 / 0.8;
+    z-index: 2;
+}
 
-    background-color: yellow;
+.image-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* tree-view 基础布局与样式 */
@@ -102,21 +125,22 @@ body {
     right: 10%;
     bottom: 5%;
     left: 32%;
+    z-index: 3;
 }
-.tree-links { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
-.tree-nodes { position: absolute; inset: 0; z-index: 1; }
+.tree-links { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; }
+.tree-nodes { position: absolute; inset: 0; z-index: 3; }
 
 .node {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 14px; height: 14px; border-radius: 50%;
-    background: #e74c3c;
-    box-shadow: 0 0 0 3px #fff, 0 4px 12px rgba(0,0,0,0.2);
+    width: 14px; height: 14px;
+    border-radius: 2px; /* 方形 */
+    background: #f5e6b3; /* 米黄色 */
+    box-shadow: none;
     cursor: pointer;
 }
-.node.root { background: #222; cursor: default; }
-.node.level-1 { background: #e74c3c; }
-.node.level-2 { background: #c0392b; }
+.node.root { background: #f5e6b3; cursor: default; box-shadow: none; }
+.node.level-1, .node.level-2 { background: #f5e6b3; box-shadow: 0 0 0 2px #ffffff; }
 
 .label {
     font-size: small;
@@ -149,7 +173,7 @@ body {
     -webkit-backdrop-filter: blur(14px) saturate(160%);
     box-shadow: 0 10px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.5);
 }
-.link { stroke: #333; stroke-width: 1.5; vector-effect: non-scaling-stroke; fill: none; }
+.link { stroke: #f5e6b3; stroke-width: 2; vector-effect: non-scaling-stroke; fill: none; }
 
 .tooltip {
     position: fixed;
