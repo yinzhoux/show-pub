@@ -226,9 +226,9 @@
                 el.addEventListener('mouseenter', (e)=> showTip(e,node));
                 el.addEventListener('mousemove', positionTip);
                 el.addEventListener('mouseleave', hideTip);
-                // 点击：仅二级节点跳转（新标签）
+                // 点击：仅二级节点触发详细信息显示
                 if (level === 2) {
-                    el.addEventListener('click', ()=> node.url && window.open(node.url,'_blank'));
+                    el.addEventListener('click', ()=> showDetailView(node));
                 }
             }
             nodesHost.appendChild(el);
@@ -300,6 +300,44 @@
             tip.arrow.style.top = '8px';
         }
     }
+
+    // 详细信息显示功能
+    function showDetailView(node) {
+        // 创建第二块液态玻璃容器
+        const detailGlass = document.createElement('div');
+        detailGlass.className = 'liquid-glass detail-glass';
+        detailGlass.innerHTML = `
+            <div class="detail-content">
+                <div class="detail-header">
+                    <h2 class="detail-title">${node.title}</h2>
+                    <button class="close-btn" onclick="closeDetailView()">×</button>
+                </div>
+                <div class="detail-body">
+                    <p class="detail-desc">${node.desc || '暂无描述'}</p>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(detailGlass);
+        
+        // 触发上滑动画
+        setTimeout(() => {
+            detailGlass.classList.add('slide-up');
+        }, 10);
+    }
+    
+    function closeDetailView() {
+        const detailGlass = document.querySelector('.detail-glass');
+        if (detailGlass) {
+            detailGlass.classList.add('slide-down');
+            setTimeout(() => {
+                detailGlass.remove();
+            }, 300);
+        }
+    }
+    
+    // 将关闭函数暴露到全局作用域
+    window.closeDetailView = closeDetailView;
 
     // 初始渲染 + 窗口尺寸变化时重算
     function onResize(){ render(); }
