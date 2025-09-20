@@ -13,9 +13,9 @@
             desc: '亚洲的媒体',
             url: '#',
             children: [
-              { id: 'c1a', title: 'CCTV',                 needShow: false, desc: '中国中央电视台', url: './pages/asia1.html' },
-              { id: 'c1b', title: 'NHK',                  needShow: false, desc: '日本放送协会',     url: './pages/asia2.html' },
-              { id: 'c1c', title: 'The Times of India',   needShow: true,  desc: '印度时报',         url: './pages/asia3.html' }
+              { id: 'c1a', title: 'CCTV',                 needShow: false, desc: '中国中央电视台',   url: './pages/test.html' },
+              { id: 'c1b', title: 'NHK',                  needShow: false, desc: '日本放送协会',     url: './pages/test.html' },
+              { id: 'c1c', title: 'The Times of India',   needShow: true,  desc: '印度时报',         url: './pages/test.html' }
             ]
           },
           {
@@ -24,9 +24,9 @@
             desc: '欧洲的媒体',
             url: '#',
             children: [
-              { id: 'c2a', title: 'BBC',             needShow: true,  desc: '英国广播公司',       url: './pages/europe1.html' },
-              { id: 'c2b', title: 'Le Monde',        needShow: false, desc: '法国《世界报》',     url: './pages/europe2.html' },
-              { id: 'c2c', title: 'Der Spiegel',     needShow: false, desc: '德国《明镜周刊》',   url: './pages/europe3.html' }
+              { id: 'c2a', title: 'BBC',             needShow: true,  desc: '英国广播公司',       url: './pages/test.html' },
+              { id: 'c2b', title: 'Le Monde',        needShow: false, desc: '法国《世界报》',     url: './pages/test.html' },
+              { id: 'c2c', title: 'Der Spiegel',     needShow: false, desc: '德国《明镜周刊》',   url: './pages/test.html' }
             ]
           },
           {
@@ -35,9 +35,9 @@
             desc: '北美的媒体',
             url: '#',
             children: [
-              { id: 'c3a', title: 'The New York Times', needShow: false, desc: '美国《纽约时报》', url: './pages/na1.html' },
-              { id: 'c3b', title: 'CNN',               needShow: true,  desc: '美国有线电视新闻网', url: './pages/na2.html' },
-              { id: 'c3c', title: 'The Washington Post',needShow: false, desc: '美国《华盛顿邮报》', url: './pages/na3.html' }
+              { id: 'c3a', title: 'The New York Times', needShow: false, desc: '美国《纽约时报》',   url: './pages/test.html' },
+              { id: 'c3b', title: 'CNN',               needShow: true,  desc: '美国有线电视新闻网',  url: './pages/test.html' },
+              { id: 'c3c', title: 'The Washington Post',needShow: false, desc: '美国《华盛顿邮报》', url: './pages/test.html' }
             ]
           },
           {
@@ -46,8 +46,8 @@
             desc: '南美的媒体',
             url: '#',
             children: [
-              { id: 'c4a', title: 'O Globo',       needShow: false, desc: '巴西《环球报》',     url: './pages/sa1.html' },
-              { id: 'c4b', title: 'Folha de S.Paulo', needShow: true,  desc: '巴西《圣保罗页报》', url: './pages/sa2.html' }
+              { id: 'c4a', title: 'O Globo',       needShow: false, desc: '巴西《环球报》',       url: './pages/test.html' },
+              { id: 'c4b', title: 'Folha de S.Paulo', needShow: true,  desc: '巴西《圣保罗页报》', url: './pages/test.html' }
             ]
           },
           {
@@ -56,8 +56,8 @@
             desc: '非洲的媒体',
             url: '#',
             children: [
-              { id: 'c5a', title: 'Daily Nation',  needShow: false, desc: '肯尼亚《国家日报》', url: './pages/af1.html' },
-              { id: 'c5b', title: 'News24',        needShow: false, desc: '南非News24',        url: './pages/af2.html' }
+              { id: 'c5a', title: 'Daily Nation',  needShow: false, desc: '肯尼亚《国家日报》', url: './pages/test.html' },
+              { id: 'c5b', title: 'News24',        needShow: false, desc: '南非News24',        url: './pages/test.html' }
             ]
           },
           {
@@ -66,8 +66,8 @@
             desc: '澳洲/大洋洲的媒体',
             url: '#',
             children: [
-              { id: 'c6a', title: 'ABC (Australia)',           needShow: false, desc: '澳大利亚广播公司',   url: './pages/oc1.html' },
-              { id: 'c6b', title: 'The Sydney Morning Herald', needShow: false, desc: '悉尼先驱晨报',       url: './pages/oc2.html' }
+              { id: 'c6a', title: 'ABC (Australia)',           needShow: false, desc: '澳大利亚广播公司',   url: './pages/test.html' },
+              { id: 'c6b', title: 'The Sydney Morning Herald', needShow: false, desc: '悉尼先驱晨报',       url: './pages/test.html' }
             ]
           },
           {
@@ -76,7 +76,7 @@
             desc: '南极洲（科研/资料媒体）',
             url: '#',
             children: [
-              { id: 'c7a', title: 'Polar Research Bulletin', needShow: false, desc: '极地研究公告', url: './pages/an1.html' }
+              { id: 'c7a', title: 'Polar Research Bulletin', needShow: false, desc: '极地研究公告', url: './pages/test.html' }
             ]
           }
         ]
