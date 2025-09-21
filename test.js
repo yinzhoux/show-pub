@@ -1,86 +1,5 @@
 (function(){
-    /**
-     * demo tree 数据。约定：只到第二层（level-2）。
-     */
-    const data = {
-        id: 'root',
-        title: 'Continent',
-        desc: '根节点（不交互）',
-        children: [
-          {
-            id: 'c1',
-            title: 'Asia',
-            desc: '亚洲的媒体',
-            url: '#',
-            children: [
-              { id: 'c1a', title: 'CCTV',                 needShow: false, desc: '中国中央电视台',   url: './pages/test.html' },
-              { id: 'c1b', title: 'NHK',                  needShow: false, desc: '日本放送协会',     url: './pages/test.html' },
-              { id: 'c1c', title: 'The Times of India',   needShow: true,  desc: '印度时报',         url: './pages/test.html' }
-            ]
-          },
-          {
-            id: 'c2',
-            title: 'Europe',
-            desc: '欧洲的媒体',
-            url: '#',
-            children: [
-              { id: 'c2a', title: 'BBC',             needShow: true,  desc: '英国广播公司',       url: './pages/test.html' },
-              { id: 'c2b', title: 'Le Monde',        needShow: false, desc: '法国《世界报》',     url: './pages/test.html' },
-              { id: 'c2c', title: 'Der Spiegel',     needShow: false, desc: '德国《明镜周刊》',   url: './pages/test.html' }
-            ]
-          },
-          {
-            id: 'c3',
-            title: 'North America',
-            desc: '北美的媒体',
-            url: '#',
-            children: [
-              { id: 'c3a', title: 'The New York Times', needShow: false, desc: '美国《纽约时报》',   url: './pages/test.html' },
-              { id: 'c3b', title: 'CNN',               needShow: true,  desc: '美国有线电视新闻网',  url: './pages/test.html' },
-              { id: 'c3c', title: 'The Washington Post',needShow: false, desc: '美国《华盛顿邮报》', url: './pages/test.html' }
-            ]
-          },
-          {
-            id: 'c4',
-            title: 'South America',
-            desc: '南美的媒体',
-            url: '#',
-            children: [
-              { id: 'c4a', title: 'O Globo',       needShow: false, desc: '巴西《环球报》',       url: './pages/test.html' },
-              { id: 'c4b', title: 'Folha de S.Paulo', needShow: true,  desc: '巴西《圣保罗页报》', url: './pages/test.html' }
-            ]
-          },
-          {
-            id: 'c5',
-            title: 'Africa',
-            desc: '非洲的媒体',
-            url: '#',
-            children: [
-              { id: 'c5a', title: 'Daily Nation',  needShow: false, desc: '肯尼亚《国家日报》', url: './pages/test.html' },
-              { id: 'c5b', title: 'News24',        needShow: false, desc: '南非News24',        url: './pages/test.html' }
-            ]
-          },
-          {
-            id: 'c6',
-            title: 'Australia/Oceania',
-            desc: '澳洲/大洋洲的媒体',
-            url: '#',
-            children: [
-              { id: 'c6a', title: 'ABC (Australia)',           needShow: false, desc: '澳大利亚广播公司',   url: './pages/test.html' },
-              { id: 'c6b', title: 'The Sydney Morning Herald', needShow: false, desc: '悉尼先驱晨报',       url: './pages/test.html' }
-            ]
-          },
-          {
-            id: 'c7',
-            title: 'Antarctica',
-            desc: '南极洲（科研/资料媒体）',
-            url: '#',
-            children: [
-              { id: 'c7a', title: 'Polar Research Bulletin', needShow: false, desc: '极地研究公告', url: './pages/test.html' }
-            ]
-          }
-        ]
-      };
+    const data = treeData;
       
       
 
@@ -303,21 +222,56 @@
 
     // 详细信息显示功能
     function showDetailView(node) {
+        // 获取文章数据
+        const article = articlesData && node.articleId ? articlesData[node.articleId] : null;
+        
         // 创建第二块液态玻璃容器
         const detailGlass = document.createElement('div');
         detailGlass.className = 'liquid-glass detail-glass';
-        detailGlass.innerHTML = `
-            <div class="detail-content">
-                <div class="detail-header">
-                    <h2 class="detail-title">${node.title}</h2>
-                    <button class="close-btn" onclick="closeDetailView()">×</button>
-                </div>
-                <div class="detail-body">
-                    <p class="detail-desc">${node.desc || '暂无描述'}</p>
-                </div>
-            </div>
-        `;
         
+        let contentHtml = '';
+        if (article) {
+            contentHtml = `
+                <div class="detail-content">
+                    <div class="detail-header">
+                        <h2 class="detail-title">${article.title}</h2>
+                        <button class="close-btn" onclick="closeDetailView()">×</button>
+                    </div>
+                    <div class="detail-body">
+                        <div class="article-summary">${article.summary}</div>
+                        <div class="article-content">${article.content}</div>
+                        <div class="article-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">成立时间：</span>
+                                <span class="meta-value">${article.founded}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">总部：</span>
+                                <span class="meta-value">${article.headquarters}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">官网：</span>
+                                <a href="${article.website}" target="_blank" class="meta-link">${article.website}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            contentHtml = `
+                <div class="detail-content">
+                    <div class="detail-header">
+                        <h2 class="detail-title">${node.title}</h2>
+                        <button class="close-btn" onclick="closeDetailView()">×</button>
+                    </div>
+                    <div class="detail-body">
+                        <p class="detail-desc">${node.desc || '暂无描述'}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        detailGlass.innerHTML = contentHtml;
         document.body.appendChild(detailGlass);
         
         // 触发上滑动画
